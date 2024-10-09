@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Продажа запчастей</title>
+
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js" defer></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            <header>
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <a class="navbar-brand">Продажа запчастей</a>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item"><button type="submit" name="action" value="addOrder">Заказы</button></li>
+                            <li class="nav-item"><button type="submit" name="action" value="addDetail">Детали</button></li>
+                            <li class="nav-item"><button type="submit" name="action" value="addProvider">Поставщики</button></li>
+                            <li class="nav-item"><button type="submit" name="action" value="addClient">Клиенты</button></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </form>
+        <br />
+
+
+        <main role="main" class="pb-3">
+
+            <div id="successModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <p>Данные успешно добавлены!</p>
+                </div>
+            </div>
+            <script>
+                function showModal() {
+                    var modal = document.getElementById("successModal");
+                    modal.style.display = "block";
+
+
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            location.reload();
+                            modal.style.display = "none";
+                        }
+                    }
+                }
+
+                @if (TempData["ClientAdded"] != null && (bool)TempData["ClientAdded"])
+                {
+                    <text>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            showModal();
+                        });
+                    </text>
+                }
+            </script>
+
+
+            <div class="text-center">
+                <br />
+                @RenderBody()
+            </div>
+            
+        </main>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Заказы";
+}
+
+
+
+<p class="test">Заказы</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Количество деталей</th>
+            <th>Поставщик</th>
+            <th>Клиент</th>
+            <th>Артикул</th>
+            <th>Дата заключения</th>
+            <th>Крайний срок доставки</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model.resultOrders)
+        {
+            <tr>
+                <td>@note.Amount</td>
+                <td>@note.NameProvider</td>
+                <td>@note.FIOClient</td>
+                <td>@note.VendorСode</td>
+                <td>@note.DateOfConclusion</td>
+                <td>@note.DeliveryDeadline</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<form method="post">
+    <p class="test">Добавление заказа</p>
+    <hr />
+    @if (ViewBag.NameError != null)
+    {
+        <br />
+        <span class="except">@ViewBag.NameError</span>
+    }
+    <br />
+
+    <div class="form-group">
+
+        <label class="labeltest">Количество деталей:</label>
+        <div>
+            <input class="form-control" name="colDet" id="colDet" required></input>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="labeltest">Поставщик:</label>
+        <div>
+            <select name="prov" class="form-control">
+                @foreach (var emp in Model.providers)
+                {
+                    <option value="@emp.Id">@emp.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="labeltest">Артикул детали:</label>
+        <div>
+            <select name="art" class="form-control" id="art">
+                @foreach (var cp in Model.details)
+                {
+                    <option value="@cp.Id">@cp.Id</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="labeltest">Клиент:</label>
+        <div>
+            <select name="cl" class="form-control" id="cl">
+                @foreach (var cp in Model.clients)
+                {
+                    <option value="@cp.Id">@cp.Surname @cp.Name </option>
+                }
+            </select>
+        </div>
+
+        <label class="labeltest">Крайний срок доставки:</label>
+        <div>
+            <input type="date" name="crSrDev" class="form-control" id="crSrDev" required />
+        </div>
+
+    </div>
+
+    <br />
+    <button type="submit" name="action" value="addNewOrder" class="btn btn-primary">Добавить заказ</button>
+</form>
+

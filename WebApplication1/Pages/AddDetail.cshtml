@@ -1,0 +1,60 @@
+﻿@page
+@using WebApplication1.Classes.DataBase
+@model WebApplication1.Pages.AddDetailModel
+@{
+    ViewData["Title"] = "Детали";
+}
+    
+<p class="test">Детали</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Описание</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Detail detail in Model.Details)
+        { 
+            <tr>
+                <td>@detail.Id</td>
+                <td>@detail.Name</td>
+                <td>@detail.Price</td>
+                <td>@detail.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
+
+<form method="post">
+
+    <p class="test">Добавление детали</p>
+    <hr />
+    @if (ViewBag.NameError != null)
+    {
+        <br />
+        <span class="except">@ViewBag.NameError</span>
+    }
+    <br />
+
+    <div class="form-group">
+        <label for="name" class="labeltest">Наименование:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+
+    </div>
+
+    <div class="form-group">
+        <label for="login" class="labeltest">Цена:</label>
+        <input type="text" id="price" name="price" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="labeltest">Описание:</label>
+        <textarea type="text" id="description" name="description" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary testbutton" name="action" value="addNewDetail">Добавить деталь</button>
+</form>

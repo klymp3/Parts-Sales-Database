@@ -1,0 +1,59 @@
+﻿@page
+@using WebApplication1.Classes.DataBase
+@model WebApplication1.Pages.AddProviderModel
+@{
+    ViewData["Title"] = "Поставщики";
+}
+
+
+<p class="test">Поставщики</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Адрес</th>
+            <th>Телефон</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Provider provider in Model.Providers)
+        { 
+            <tr>
+                <td>@provider.Id</td>
+                <td>@provider.Name</td>
+                <td>@provider.Address</td>
+                <td>@provider.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<form method="post">
+    <p class="test">Добавление поставщика</p>
+    <hr />
+    @if (ViewBag.NameError != null)
+    {
+        <br />
+        <span class="except">@ViewBag.NameError</span>
+    }
+    <br />
+
+    <div class="form-group">
+        <label for="name" class="labeltest">Наименование:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="login" class="labeltest">Адрес:</label>
+        <input type="text" id="address" name="address" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="labeltest">Номер телефона:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="+375 11 111 11 11" pattern="^\+375 ((29)||(44)||(33)||(25)) [0-9]{3} [0-9]{2} [0-9]{2}$" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary testbutton" name="action" value="addNewProvider">Добавить поставщика</button>
+</form>
