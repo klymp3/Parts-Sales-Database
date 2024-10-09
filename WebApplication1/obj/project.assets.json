@@ -3695,11 +3695,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\КБиП\\C#\\ASP.NET\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\КБиП\\C#\\Parts-Sales-Database\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "D:\\КБиП\\C#\\ASP.NET\\WebApplication1\\WebApplication1.csproj",
+      "projectPath": "D:\\КБиП\\C#\\Parts-Sales-Database\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "D:\\КБиП\\C#\\ASP.NET\\WebApplication1\\obj\\",
+      "outputPath": "D:\\КБиП\\C#\\Parts-Sales-Database\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
